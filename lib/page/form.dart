@@ -1,8 +1,11 @@
+// ignore_for_file: prefer_interpolation_to_compose_strings
+
 import 'package:flutter/material.dart';
 import 'package:tutorial_pbp/main.dart';
+import 'package:tutorial_pbp/page/to_do_page.dart';
 
 class MyFormPage extends StatefulWidget {
-  MyFormPage({Key? key}) : super(key: key);
+  const MyFormPage({Key? key}) : super(key: key);
 
   @override
   State<MyFormPage> createState() => _MyFormPageState();
@@ -25,7 +28,6 @@ class _MyFormPageState extends State<MyFormPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Form'),
-        
       ),
       drawer: Drawer(
         child: Column(
@@ -48,6 +50,16 @@ class _MyFormPageState extends State<MyFormPage> {
                 Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(builder: (context) => MyFormPage()),
+                );
+              },
+            ),
+            ListTile(
+              title: const Text('To Do'),
+              onTap: () {
+                // Route menu ke halaman to do
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => const ToDoPage()),
                 );
               },
             ),
@@ -228,29 +240,27 @@ class _MyFormPageState extends State<MyFormPage> {
                               borderRadius: BorderRadius.circular(10),
                             ),
                             elevation: 15,
-                            child: Container(
-                              child: ListView(
-                                padding:
-                                    const EdgeInsets.only(top: 20, bottom: 20),
-                                shrinkWrap: true,
-                                children: <Widget>[
-                                  const Center(child: Text('Informasi Data')),
-                                  const SizedBox(height: 20),
-                                  Text('Nama Lengkap: ' + _namaLengkap),
-                                  Text('Umur: ' + umur.toString()),
-                                  Text('Kelas PBP: ' + kelasPBP),
-                                  Text('Practice Mode: ' +
-                                      (_nilaiSwitch
-                                          ? "Practice"
-                                          : "Not Practice")),
-                                  TextButton(
-                                    onPressed: () {
-                                      Navigator.pop(context);
-                                    },
-                                    child: const Text('Kembali'),
-                                  ),
-                                ],
-                              ),
+                            child: ListView(
+                              padding:
+                                  const EdgeInsets.only(top: 20, bottom: 20),
+                              shrinkWrap: true,
+                              children: <Widget>[
+                                const Center(child: Text('Informasi Data')),
+                                const SizedBox(height: 20),
+                                Text('Nama Lengkap: ' + _namaLengkap),
+                                Text('Umur: ' + umur.toString()),
+                                Text('Kelas PBP: ' + kelasPBP),
+                                Text('Practice Mode: ' +
+                                    (_nilaiSwitch
+                                        ? "Practice"
+                                        : "Not Practice")),
+                                TextButton(
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                  },
+                                  child: const Text('Kembali'),
+                                ),
+                              ],
                             ),
                           );
                         },
